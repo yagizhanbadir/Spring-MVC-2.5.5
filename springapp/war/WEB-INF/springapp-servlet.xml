@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- the application context definition for the springapp DispatcherServlet -->
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+
+	<bean name="/hello.htm" class="springapp.web.InventoryController">
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/colors.htm" class="springapp.web.InventoryColorsController">
+		<property name="productManager" ref="productManager" />
+	</bean>
+	
+	<bean name="/accessorys.htm" class="springapp.web.InventoryAccessorysController">
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+
+
+	<bean name="/priceincrease.htm" class="springapp.web.PriceIncreaseFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="priceIncrease" />
+		<property name="commandClass" value="springapp.service.PriceIncrease" />
+		<property name="validator">
+			<bean class="springapp.service.PriceIncreaseValidator" />
+		</property>
+		<property name="formView" value="priceincrease" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/pricecut.htm" class="springapp.web.PriceCutFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="priceCut" />
+		<property name="commandClass" value="springapp.service.PriceCut" />
+		<property name="validator">
+			<bean class="springapp.service.PriceCutValidator" />
+		</property>
+		<property name="formView" value="pricecut" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/addproduct.htm" class="springapp.web.AddProductFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="product" />
+		<property name="commandClass" value="springapp.domain.Product" />
+		<property name="validator">
+			<bean class="springapp.service.AddProductValidator" />
+		</property>
+		
+		<property name="formView" value="addproduct" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/addcolor.htm" class="springapp.web.AddColorFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="color" />
+		<property name="commandClass" value="springapp.domain.Color" />
+		<property name="validator">
+			<bean class="springapp.service.AddColorValidator" />
+		</property>
+
+		<property name="formView" value="addcolor" />
+		<property name="successView" value="colors.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+<bean name="/addaccessory.htm" class="springapp.web.AddAccessoryFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="accessory" />
+		<property name="commandClass" value="springapp.domain.Accessory" />
+		<property name="validator">
+			<bean class="springapp.service.AddAccessoryValidator" />
+		</property>
+
+		<property name="formView" value="addaccessory" />
+		<property name="successView" value="accessorys.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+
+
+
+	<bean name="/updateproduct.htm" class="springapp.web.UpdateProductFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="updateProduct" />
+		<property name="commandClass" value="springapp.domain.Product" />
+		<property name="validator">
+			<bean class="springapp.service.UpdateProductValidator" />
+		</property>
+		
+		<property name="formView" value="updateproduct" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+	
+	<bean name="/updateaccessory.htm" class="springapp.web.UpdateAccessoryFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="updateAccessory" />
+		<property name="commandClass" value="springapp.domain.Accessory" />
+		<property name="validator">
+			<bean class="springapp.service.UpdateAccessoryValidator" />
+		</property>
+		<property name="formView" value="updateaccessory" />
+		<property name="successView" value="accessorys.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+
+
+	<bean name="/updatestock.htm" class="springapp.web.UpdateStockFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="updateStock" />
+		<property name="commandClass" value="springapp.service.UpdateStock" />
+
+		<property name="formView" value="updatestock" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/updatecolor.htm" class="springapp.web.UpdateColorFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="updateColor" />
+		<property name="commandClass" value="springapp.domain.Color" />
+		<property name="validator">
+			<bean class="springapp.service.UpdateColorValidator" />
+		</property>
+		<property name="formView" value="updatecolor" />
+		<property name="successView" value="colors.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+
+
+	<bean name="/delete.htm" class="springapp.web.DeleteProductFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="deleteProduct" />
+		<property name="commandClass" value="springapp.domain.Product" />
+
+		<property name="formView" value="delete" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+	
+	<bean name="/deleteaccessory.htm" class="springapp.web.DeleteAccessoryFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="deleteAccessory" />
+		<property name="commandClass" value="springapp.domain.Accessory" />
+
+		<property name="formView" value="deleteaccessory" />
+		<property name="successView" value="accessorys.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/deletecolor.htm" class="springapp.web.DeleteColorFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="deleteColor" />
+		<property name="commandClass" value="springapp.domain.Color" />
+
+		<property name="formView" value="deletecolor" />
+		<property name="successView" value="colors.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+
+	<bean name="/increasestock.htm" class="springapp.web.StockIncreaseController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="increaseStock" />
+		<property name="commandClass" value="springapp.domain.Product" />
+
+		<property name="formView" value="increasestock" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+	<bean name="/decreasestock.htm" class="springapp.web.StockDecreaseController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="decreaseStock" />
+		<property name="commandClass" value="springapp.domain.Product" />
+
+		<property name="formView" value="decreasestock" />
+		<property name="successView" value="hello.htm" />
+		<property name="productManager" ref="productManager" />
+	</bean>
+
+
+
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+</beans>
