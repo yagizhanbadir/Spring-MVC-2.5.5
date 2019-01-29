@@ -93,7 +93,6 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao {
 			// accessory.setAccessoryID(rs.getInt("accessoryID"));
 			// accessory.setAccessoryName(rs.getString("accessoryName"));
 			// accessory.setAccessoryDescription(rs.getString("accessoryDescription"));
-			// logger.info("dddddddddddddddddddddddd           " + accessory );
 			// prod.getAccessoryList().add(accessory);
 			return prod;
 		}
